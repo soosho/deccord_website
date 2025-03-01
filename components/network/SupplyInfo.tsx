@@ -1,6 +1,56 @@
+'use client'
+
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
+import { useEffect, useState } from "react"
+import { siteConfig } from "@/config/site"
 
 export function SupplyInfo() {
+  const [circulatingSupply, setCirculatingSupply] = useState<number>(500000)
+  const [loading, setLoading] = useState(true)
+  const [error, setError] = useState<string | null>(null)
+
+  useEffect(() => {
+    const fetchSupply = async () => {
+      try {
+        const response = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getSupply}`, {
+          method: 'GET',
+          headers: {
+            'Accept': 'application/json',
+          },
+          mode: 'cors',
+          cache: 'no-store'
+        })
+
+        if (!response.ok) {
+          throw new Error('Network response was not ok')
+        }
+
+        const supply = await response.json()
+        const supplyNumber = typeof supply === 'string' ? parseFloat(supply) : Number(supply)
+        
+        if (isNaN(supplyNumber)) {
+          throw new Error('Invalid supply value received')
+        }
+
+        setCirculatingSupply(supplyNumber)
+        setError(null)
+      } catch (error) {
+        console.warn('Error fetching supply:', error)
+        // Keep using the initial value (500000) in case of error
+      } finally {
+        setLoading(false)
+      }
+    }
+
+    fetchSupply()
+  }, [])
+
+  const formatNumber = (num: number) => {
+    return new Intl.NumberFormat('en-US', {
+      maximumFractionDigits: 2
+    }).format(num)
+  }
+
   return (
     <section className="py-16">
       <div className="container mx-auto px-4">
@@ -35,7 +85,15 @@ export function SupplyInfo() {
               <CardDescription>Currently available coins</CardDescription>
             </CardHeader>
             <CardContent>
-              <p className="text-3xl font-bold text-primary">0 DCD</p>
+              <p className="text-3xl font-bold text-primary">
+                {loading ? (
+                  '...'
+                ) : error ? (
+                  <span className="text-red-500 text-base">Error loading data</span>
+                ) : (
+                  `${formatNumber(circulatingSupply)} DCD`
+                )}
+              </p>
             </CardContent>
           </Card>
         </div>
