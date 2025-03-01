@@ -1,6 +1,21 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DECCORD Website
+
+This is a [Next.js](https://nextjs.org) project (v15.1.7) bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
+
+### Prerequisites
+
+- Node.js (recommended version 18.x or higher)
+- npm (Node Package Manager)
+
+### Installation
+
+First, install the dependencies. Due to peer dependency requirements, use:
+
+```bash
+npm install --legacy-peer-deps
+```
 
 First, run the development server:
 
