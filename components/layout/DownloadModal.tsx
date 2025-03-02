@@ -2,7 +2,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogTrigger } from "@/components/ui/dialog"
 import { Button } from "@/components/ui/button"
-import { Download, Github, Monitor, Terminal, Package, Apple } from "lucide-react"
+import { Download, Github, Monitor, Terminal, Package } from "lucide-react"
 
 interface DownloadButtonProps {
   className?: string
@@ -32,11 +32,25 @@ export function DownloadButton({ className, variant = "outline" }: DownloadButto
             className="flex h-auto items-center justify-start gap-3 p-3 sm:p-4 hover:border-primary/50"
             asChild
           >
-            <a href="https://github.com/deccord/deccord/releases/latest/download/deccord-windows.zip">
+            <a href="https://github.com/Deccord/deccord/releases/download/20.0.1/deccord_setupx64.exe">
               <Monitor className="h-5 w-5 shrink-0" />
               <div className="flex flex-col items-start text-left">
-                <span className="text-sm font-semibold">Windows</span>
-                <span className="text-xs text-muted-foreground">64-bit installer</span>
+                <span className="text-sm font-semibold">Windows Installer</span>
+                <span className="text-xs text-muted-foreground">64-bit setup (recommended)</span>
+              </div>
+            </a>
+          </Button>
+
+          <Button 
+            variant="outline" 
+            className="flex h-auto items-center justify-start gap-3 p-3 sm:p-4 hover:border-primary/50"
+            asChild
+          >
+            <a href="https://github.com/Deccord/deccord/releases/download/20.0.1/deccord-20.0.1-win64.zip">
+              <Package className="h-5 w-5 shrink-0" />
+              <div className="flex flex-col items-start text-left">
+                <span className="text-sm font-semibold">Windows Portable</span>
+                <span className="text-xs text-muted-foreground">64-bit ZIP archive</span>
               </div>
             </a>
           </Button>
@@ -46,11 +60,11 @@ export function DownloadButton({ className, variant = "outline" }: DownloadButto
             className="flex h-auto items-center justify-start gap-3 p-3 sm:p-4 hover:border-primary/50"
             asChild
           >
-            <a href="https://github.com/deccord/deccord/releases/latest/download/deccord-linux.tar.gz">
+            <a href="https://github.com/Deccord/deccord/releases/download/20.0.1/deccord-20.0.1-x86_64-linux-gnu.tar.gz">
               <Terminal className="h-5 w-5 shrink-0" />
               <div className="flex flex-col items-start text-left">
                 <span className="text-sm font-semibold">Linux</span>
-                <span className="text-xs text-muted-foreground">Ubuntu/Debian</span>
+                <span className="text-xs text-muted-foreground">x86_64 GNU/Linux</span>
               </div>
             </a>
           </Button>
@@ -60,32 +74,18 @@ export function DownloadButton({ className, variant = "outline" }: DownloadButto
             className="flex h-auto items-center justify-start gap-3 p-3 sm:p-4 hover:border-primary/50"
             asChild
           >
-            <a href="https://github.com/deccord/deccord/releases/latest/download/deccord-macos.dmg">
-              <Apple className="h-5 w-5 shrink-0" />
-              <div className="flex flex-col items-start text-left">
-                <span className="text-sm font-semibold">macOS</span>
-                <span className="text-xs text-muted-foreground">Intel & Apple Silicon</span>
-              </div>
-            </a>
-          </Button>
-
-          <Button 
-            variant="outline" 
-            className="flex h-auto items-center justify-start gap-3 p-3 sm:p-4 hover:border-primary/50"
-            asChild
-          >
-            <a href="https://github.com/deccord/deccord/releases/latest">
+            <a href="https://github.com/Deccord/deccord/archive/refs/tags/20.0.1.zip">
               <Package className="h-5 w-5 shrink-0" />
               <div className="flex flex-col items-start text-left">
-                <span className="text-sm font-semibold">Other Downloads</span>
-                <span className="text-xs text-muted-foreground">Source code & other platforms</span>
+                <span className="text-sm font-semibold">Source Code</span>
+                <span className="text-xs text-muted-foreground">ZIP archive</span>
               </div>
             </a>
           </Button>
 
           <div className="mt-2 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-2 text-sm text-muted-foreground">
             <a 
-              href="https://github.com/deccord/deccord/releases"
+              href="https://github.com/Deccord/deccord/releases"
               className="flex items-center gap-1 hover:text-primary transition-colors"
               target="_blank"
               rel="noopener noreferrer"
@@ -93,7 +93,7 @@ export function DownloadButton({ className, variant = "outline" }: DownloadButto
               <Github className="h-4 w-4" />
               All releases
             </a>
-            <span className="text-xs sm:text-sm">Version: 1.0.0</span>
+            <span className="text-xs sm:text-sm">Version: 20.0.1</span>
           </div>
         </div>
       </DialogContent>
