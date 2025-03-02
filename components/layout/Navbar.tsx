@@ -28,7 +28,7 @@ export function Navbar() {
           <Link href="/network" className="hover:text-primary transition-colors">Network</Link>
           <Link href="/mining-pools" className="hover:text-primary transition-colors">Mining Pools</Link>
           <a 
-            href="https://explorer.deccord.com" 
+            href="https://dcdxplorer.com" 
             target="_blank" 
             rel="noopener noreferrer" 
             className="hover:text-primary transition-colors"
