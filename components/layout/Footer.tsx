@@ -40,9 +40,9 @@ export function Footer() {
           <div>
             <h3 className="font-bold mb-4">Community</h3>
             <ul className="space-y-2">
-              <li><Link href="https://discord.gg/deccord">Discord</Link></li>
-              <li><Link href="https://t.me/deccord">Telegram</Link></li>
-              <li><Link href="https://twitter.com/DeccordCoin">Twitter</Link></li>
+              <li><Link href="https://discord.gg/rhfYv7r9Q4">Discord</Link></li>
+              <li><Link href="https://github.com/deccord">Github</Link></li>
+              <li><Link href="https://x.com/Deccord_">Twitter</Link></li>
             </ul>
           </div>
         </div>

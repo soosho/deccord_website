@@ -6,7 +6,7 @@ export function CommunitySection() {
   const socialLinks = [
     {
       name: "Discord",
-      href: "https://discord.gg/DNGUuJBt2Y",
+      href: "https://discord.gg/rhfYv7r9Q4",
       icon: "/icons/social/discord.svg"
     },
     {
