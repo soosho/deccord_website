@@ -47,7 +47,7 @@ export function HeroSection() {
             asChild
           >
             <a 
-              href="https://explorer.deccord.com" 
+              href="https://dcdxplorer.com" 
               target="_blank" 
               rel="noopener noreferrer"
               className="flex items-center gap-2"
