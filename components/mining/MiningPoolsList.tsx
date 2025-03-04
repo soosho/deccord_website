@@ -1,25 +1,32 @@
 import { Card, CardHeader, CardTitle, CardDescription, CardContent } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
 import { ExternalLink } from "lucide-react"
+import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs"
 
 const miningPools = [
   {
-    name: "Mining Pool Hub",
-    url: "https://miningpoolhub.com/?page=pool&algo=x11",
-    fee: "0.9%",
-    minPayout: "0.1 DCD",
-    features: ["PPLNS", "Automatic Wallet Creation", "Real-time Statistics"],
+    name: "ALTCOINSPOOL",
+    url: "https://altcoinspool.com",
+    fee: "1%",
+    minPayout: "No minimum",
+    features: [
+      "PPLNS",
+      "Real-time Statistics",
+      "15 minutes payout time frame"
+    ],
     location: "Global",
-    hashrate: "Variable"
-  },
-  {
-    name: "ZPool",
-    url: "https://zpool.ca",
-    fee: "2%",
-    minPayout: "0.001 DCD",
-    features: ["Auto Exchange", "Multiple Payout Options", "Low Minimum Payout"],
-    location: "Europe",
-    hashrate: "Variable"
+    hashrate: "Variable",
+    stratums: [
+      {
+        name: "Global",
+        connection: "connect.altcoinspool.com:6840"
+      }
+      // Example of multiple stratums:
+      // {
+      //   name: "US",
+      //   connection: "us.altcoinspool.com:6840"
+      // }
+    ]
   },
   // Add more pools as they become available
 ]
@@ -56,6 +63,16 @@ export function MiningPoolsList() {
                   <span className="text-muted-foreground">Location:</span>
                   <p className="font-medium">{pool.location}</p>
                 </div>
+              </div>
+              <div className="bg-muted p-3 rounded-md">
+                <span className="text-sm font-semibold block mb-1">Stratum:</span>
+                <code className="text-sm break-all bg-background p-2 rounded block">
+                  {pool.stratums.map((stratum, idx) => (
+                    <div key={idx}>
+                      <span>{stratum.name}:</span> {stratum.connection}
+                    </div>
+                  ))}
+                </code>
               </div>
               <div className="space-y-2">
                 <span className="text-sm text-muted-foreground">Features:</span>
