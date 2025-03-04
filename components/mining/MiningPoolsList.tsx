@@ -65,14 +65,27 @@ export function MiningPoolsList() {
                 </div>
               </div>
               <div className="bg-muted p-3 rounded-md">
-                <span className="text-sm font-semibold block mb-1">Stratum:</span>
-                <code className="text-sm break-all bg-background p-2 rounded block">
-                  {pool.stratums.map((stratum, idx) => (
-                    <div key={idx}>
-                      <span>{stratum.name}:</span> {stratum.connection}
-                    </div>
+                <span className="text-sm font-semibold block mb-2">Stratum:</span>
+                <Tabs defaultValue={pool.stratums[0].name} className="w-full">
+                  <TabsList className="w-full">
+                    {pool.stratums.map((stratum) => (
+                      <TabsTrigger 
+                        key={stratum.name} 
+                        value={stratum.name}
+                        className="flex-1"
+                      >
+                        {stratum.name}
+                      </TabsTrigger>
+                    ))}
+                  </TabsList>
+                  {pool.stratums.map((stratum) => (
+                    <TabsContent key={stratum.name} value={stratum.name}>
+                      <code className="text-sm break-all bg-background p-2 rounded block">
+                        {stratum.connection}
+                      </code>
+                    </TabsContent>
                   ))}
-                </code>
+                </Tabs>
               </div>
               <div className="space-y-2">
                 <span className="text-sm text-muted-foreground">Features:</span>
