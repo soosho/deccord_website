@@ -28,6 +28,29 @@ const miningPools = [
       // }
     ]
   },
+  {
+    name: "MINORPOOL",
+    url: "https://minorpool.com",
+    fee: "1%",
+    minPayout: "0.001",
+    features: [
+      "PPLNS",
+      "Multiple difficulty options",
+      "Variable difficulty support"
+    ],
+    location: "Global",
+    hashrate: "Variable",
+    stratums: [
+      {
+        name: "Low Diff (0.1)",
+        connection: "stratum+tcp://minorpool.com:7000"
+      },
+      {
+        name: "High Diff (400)",
+        connection: "stratum+tcp://minorpool.com:7001"
+      }
+    ]
+  }
   // Add more pools as they become available
 ]
 
