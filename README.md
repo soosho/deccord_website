@@ -1,4 +1,8 @@
 # DECCORD Website
+![Next.js](https://img.shields.io/badge/Next.js-15.1.7-blue?logo=next.js)
+![Vercel Status](https://img.shields.io/badge/Vercel%20Status-Deployed-brightgreen?logo=vercel)
+![Node.js](https://img.shields.io/badge/Node.js-22.x-green?logo=node.js)
+![License](https://img.shields.io/github/license/Deccord/deccord_website)
 
 This is a [Next.js](https://nextjs.org) project (v15.1.7) bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -6,7 +10,7 @@ This is a [Next.js](https://nextjs.org) project (v15.1.7) bootstrapped with [`cr
 
 ### Prerequisites
 
-- Node.js (recommended version 18.x or higher)
+- Node.js (recommended version 22.x or higher)
 - npm (Node Package Manager)
 
 ### Installation
