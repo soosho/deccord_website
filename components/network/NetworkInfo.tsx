@@ -23,7 +23,7 @@ export function NetworkInfo() {
       { label: "Regular Masternode", value: "4,000 DCD" },
       { label: "EvoNode", value: "16,000 DCD" },
       { label: "Masternode Confirmations", value: "10 blocks" },
-      { label: "Masternode Reward", value: "15% of block reward" }
+      { label: "Masternode Reward", value: "13.5% of block reward" }
     ]
   }
 

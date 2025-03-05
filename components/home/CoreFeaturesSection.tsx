@@ -33,7 +33,7 @@ export function CoreFeaturesSection() {
       title: "Masternode Network",
       description: "Run a masternode with 4,000 DCD or EvoNode with 16,000 DCD to earn rewards and secure the network.",
       points: [
-        "15% block reward share",
+        "13.5% block reward share",
         "10 block activation time",
         "Network governance rights"
       ]

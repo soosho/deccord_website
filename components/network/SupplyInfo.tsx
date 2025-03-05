@@ -107,11 +107,11 @@ export function SupplyInfo() {
             <CardContent className="space-y-2">
               <div className="flex justify-between items-center">
                 <span className="text-muted-foreground">Block Reward:</span>
-                <span className="font-semibold">3.375 DCD</span>
+                <span className="font-semibold">3.825 DCD</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-muted-foreground">Masternode Reward:</span>
-                <span className="font-semibold">1.125 DCD</span>
+                <span className="font-semibold">0.675 DCD</span>
               </div>
               <div className="flex justify-between items-center">
                 <span className="text-muted-foreground">Superblock Reward:</span>
