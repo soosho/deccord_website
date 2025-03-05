@@ -1,9 +1,67 @@
+'use client'
+
 import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { DownloadButton } from "@/components/layout/DownloadModal"
 import { ExternalLink } from "lucide-react"
+import { useEffect, useState } from "react"
+import { siteConfig } from "@/config/site"
+
+interface StatsData {
+  price: number
+  volume: number
+  hashrate: number
+  supply: number
+}
 
 export function HeroSection() {
+  const [stats, setStats] = useState<StatsData>({
+    price: 0,
+    volume: 0,
+    hashrate: 0,
+    supply: 0
+  })
+  const [loading, setLoading] = useState(true)
+
+  const fetchStats = async () => {
+    try {
+      const options = {
+        method: 'GET',
+        headers: { 'Accept': 'application/json' },
+        cache: 'no-store' as RequestCache
+      }
+
+      const [marketData, hashrateData, supplyData] = await Promise.all([
+        fetch('https://mecacex.com/api/v2/trade/public/markets/dcdusdt/tickers').then(res => res.json()),
+        fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getHashrate}`, options).then(res => res.json()),
+        fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getSupply}`, options).then(res => res.json())
+      ])
+
+      setStats({
+        price: Number(marketData.ticker.last),
+        volume: Number(marketData.ticker.volume),
+        hashrate: Number(hashrateData.hashrate),
+        supply: Number(supplyData.supply)
+      })
+    } catch (error) {
+      console.error('Error fetching stats:', error)
+    } finally {
+      setLoading(false)
+    }
+  }
+
+  useEffect(() => {
+    fetchStats()
+    const interval = setInterval(fetchStats, 30000)
+    return () => clearInterval(interval)
+  }, [])
+
+  const formatHashrate = (hashrate: number) => {
+    if (hashrate >= 1e12) return `${(hashrate / 1e12).toFixed(2)} TH/s`
+    if (hashrate >= 1e9) return `${(hashrate / 1e9).toFixed(2)} GH/s`
+    return `${hashrate.toFixed(2)} MH/s`
+  }
+
   return (
     <section className="relative flex flex-col items-center text-center space-y-6 py-12 md:py-20 overflow-hidden px-4">
       {/* Background Elements */}
@@ -35,7 +93,9 @@ export function HeroSection() {
           A fast, secure, and fully decentralized digital currency leveraging blockchain technology 
           and masternodes to ensure governance and security.
         </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+        
+        {/* Buttons */}
+        <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mt-8">
           <DownloadButton 
             variant="default"
             className="w-full sm:w-auto bg-primary text-white hover:bg-primary/90 transition-colors shadow-lg hover:shadow-xl hover:-translate-y-0.5 transform transition-all"
@@ -55,6 +115,34 @@ export function HeroSection() {
               Block Explorer <ExternalLink className="h-4 w-4" />
             </a>
           </Button>
+        </div>
+
+        {/* Stats Grid */}
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-3 max-w-[900px] mx-auto mt-24">
+          <div className="bg-white/50 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg">
+            <div className="text-sm text-muted-foreground font-medium mb-1">Price</div>
+            <div className="text-xl md:text-2xl font-bold text-primary">
+              {loading ? '...' : `$${stats.price.toFixed(8)}`}
+            </div>
+          </div>
+          <div className="bg-white/50 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg">
+            <div className="text-sm text-muted-foreground font-medium mb-1">Volume (24h)</div>
+            <div className="text-xl md:text-2xl font-bold text-primary">
+              {loading ? '...' : `$${stats.volume.toLocaleString()}`}
+            </div>
+          </div>
+          <div className="bg-white/50 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg">
+            <div className="text-sm text-muted-foreground font-medium mb-1">Network Hashrate</div>
+            <div className="text-xl md:text-2xl font-bold text-primary">
+              {loading ? '...' : formatHashrate(stats.hashrate)}
+            </div>
+          </div>
+          <div className="bg-white/50 backdrop-blur-sm rounded-lg px-4 py-3 shadow-lg">
+            <div className="text-sm text-muted-foreground font-medium mb-1">Supply</div>
+            <div className="text-xl md:text-2xl font-bold text-primary">
+              {loading ? '...' : stats.supply.toLocaleString()}
+            </div>
+          </div>
         </div>
       </div>
 

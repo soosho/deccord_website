@@ -4,6 +4,7 @@ import { RoadmapSection } from "@/components/home/RoadmapSection"
 import { CoreFeaturesSection } from "@/components/home/CoreFeaturesSection"
 import { CommunitySection } from "@/components/home/CommunitySection"
 import { HeroSection } from "@/components/home/HeroSection"
+import { PartnersSection } from "@/components/home/PartnersSection"
 import { NetworkMetricsSection } from "@/components/home/NetworkMetricsSection"
 import { SecurityFeaturesSection } from "@/components/home/SecurityFeaturesSection"
 import { UseCasesSection } from "@/components/home/UseCasesSection"
@@ -16,7 +17,7 @@ export default function Home() {
       <Navbar />
       <main className="container mx-auto px-4 py-8">
         <HeroSection />
-        <Separator className="my-8 md:my-12" />
+        <PartnersSection />
         <CoreFeaturesSection />
         <Separator className="my-8 md:my-12" />
         <NetworkMetricsSection />

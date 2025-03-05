@@ -38,17 +38,17 @@ export function NetworkStats() {
       let supply = 500000;
 
       try {
-        blockHeight = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getBlockCount}`, options)
-          .then(res => res.json())
-          .then(data => Number(data));
+        const blockData = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getBlockCount}`, options)
+          .then(res => res.json());
+        blockHeight = Number(blockData.height);
       } catch (e) {
         console.warn('Failed to fetch block height:', e);
       }
 
       try {
-        hashrate = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getHashrate}`, options)
-          .then(res => res.json())
-          .then(data => parseFloat(data));
+        const hashrateData = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getHashrate}`, options)
+          .then(res => res.json());
+        hashrate = parseFloat(hashrateData.hashrate);
       } catch (e) {
         console.warn('Failed to fetch hashrate:', e);
       }
@@ -62,9 +62,9 @@ export function NetworkStats() {
       }
 
       try {
-        supply = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getSupply}`, options)
-          .then(res => res.json())
-          .then(data => Number(data));
+        const supplyData = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getSupply}`, options)
+          .then(res => res.json());
+        supply = Number(supplyData.supply);
       } catch (e) {
         console.warn('Failed to fetch supply:', e);
       }
@@ -90,6 +90,7 @@ export function NetworkStats() {
   }, [])
 
   const formatHashrate = (hashrate: number) => {
+    if (hashrate >= 1e12) return `${(hashrate / 1e12).toFixed(2)} TH/s`
     if (hashrate >= 1e9) return `${(hashrate / 1e9).toFixed(2)} GH/s`
     if (hashrate >= 1e6) return `${(hashrate / 1e6).toFixed(2)} MH/s`
     if (hashrate >= 1e3) return `${(hashrate / 1e3).toFixed(2)} KH/s`

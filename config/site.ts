@@ -1,11 +1,11 @@
 export const siteConfig = {
   name: "Deccord",
   url: "https://deccord.com",
-  apiEndpoint: "https://explorer.deccord.com",
+  apiEndpoint: "https://api.deccord.com",
   api: {
-    getBlockCount: "/api/getblockcount",
+    getBlockCount: "/api/blocks",
     getHashrate: "/api/getnetworkhashps",
-    getDifficulty: "/api/getdifficulty",
-    getSupply: "/ext/getmoneysupply"
+    getDifficulty: "/api/difficulty",
+    getSupply: "/api/getsupply"
   }
 }
