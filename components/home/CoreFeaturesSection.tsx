@@ -25,8 +25,8 @@ export function CoreFeaturesSection() {
       description: "Advanced mining algorithm combining 11 different cryptographic functions for enhanced security.",
       points: [
         "Energy-efficient mining",
-        "ASIC-resistant algorithm",
-        "Decentralized mining power"
+        "High-performance hashing",
+        "Multi-layer security"
       ]
     },
     {

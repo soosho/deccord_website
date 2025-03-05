@@ -6,10 +6,10 @@ export function SecurityFeaturesSection() {
       title: "X11 PoW Security",
       description: "Advanced multi-algorithm mining protection",
       points: [
-        "ASIC-resistant mining algorithm",
+        "Multi-layered hash function security",
         "Combination of 11 different hash functions",
         "Energy-efficient mining process",
-        "Fair distribution of mining rewards"
+        "Distributed network security"
       ]
     },
     {
