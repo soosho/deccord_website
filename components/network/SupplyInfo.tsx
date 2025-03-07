@@ -25,8 +25,8 @@ export function SupplyInfo() {
           throw new Error('Network response was not ok')
         }
 
-        const supply = await response.json()
-        const supplyNumber = typeof supply === 'string' ? parseFloat(supply) : Number(supply)
+        const data = await response.json()
+        const supplyNumber = typeof data.supply === 'string' ? parseFloat(data.supply) : Number(data.supply)
         
         if (isNaN(supplyNumber)) {
           throw new Error('Invalid supply value received')

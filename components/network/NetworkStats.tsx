@@ -64,7 +64,7 @@ export function NetworkStats() {
       try {
         const supplyData = await fetch(`${siteConfig.apiEndpoint}${siteConfig.api.getSupply}`, options)
           .then(res => res.json());
-        supply = Number(supplyData.supply);
+        supply = Number(supplyData.supply); // Updated to use supply from response object
       } catch (e) {
         console.warn('Failed to fetch supply:', e);
       }

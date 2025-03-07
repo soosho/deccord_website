@@ -50,6 +50,58 @@ const miningPools = [
         connection: "stratum+tcp://minorpool.com:7001"
       }
     ]
+  },
+  {
+    name: "ZERGPOOL",
+    url: "https://zergpool.com",
+    fee: "0.5%",
+    minPayout: "28.35984 DCD",
+    features: [
+      "PPLNS",
+      "Auto coin switching",
+      "Multiple regions",
+      "Real-time statistics"
+    ],
+    location: "Global (NA/EU/ASIA)",
+    hashrate: "Variable",
+    stratums: [
+      {
+        name: "Global",
+        connection: "stratum+tcp://x11.mine.zergpool.com:3533 -u <WALLET> -p c=DCD"
+      },
+      {
+        name: "North America",
+        connection: "stratum+tcp://x11.na.mine.zergpool.com:3533 -u <WALLET> -p c=DCD"
+      },
+      {
+        name: "Europe",
+        connection: "stratum+tcp://x11.eu.mine.zergpool.com:3533 -u <WALLET> -p c=DCD"
+      },
+      {
+        name: "Asia",
+        connection: "stratum+tcp://x11.asia.mine.zergpool.com:3533 -u <WALLET> -p c=DCD"
+      }
+    ]
+  },
+  {
+    name: "NERDPOOL",
+    url: "https://nerdpool.xyz",
+    fee: "0.4%",
+    minPayout: "1 DCD",
+    features: [
+      "PPLNS",
+      "Multi-algo support",
+      "Real-time statistics",
+      "Fast payouts"
+    ],
+    location: "Global",
+    hashrate: "Variable",
+    stratums: [
+      {
+        name: "Global",
+        connection: "stratum+tcp://nerdpool.xyz:4335 -u WALLET_ADDRESS.WORKER_NAME -p c=DCD,mc=DCD"
+      }
+    ]
   }
   // Add more pools as they become available
 ]
